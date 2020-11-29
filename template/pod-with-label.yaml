@@ -3,10 +3,10 @@ kind: pod
 metadata:
   name: name-pod
   labels:
-    label: label_value
+    kabe-keys1: label-value1
 spec: 
   container:
     - name: name-container
       image: image-container
       ports:
-        - container-port: 80
+        - containerPort: 80
