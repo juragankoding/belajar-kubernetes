@@ -1,0 +1,10 @@
+apiVersion: 1.0
+kind: Pod
+metadata:
+  name: name-pod
+  labels:
+    - label-keys1: label-value1
+    - label-keys2: label-value2
+  annotations:
+    - annotation-keys1: annotation-value1
+    - annotation-keys2: annotation-value2
