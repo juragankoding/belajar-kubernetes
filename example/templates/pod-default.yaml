@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nama-pod
+spec:
+  containers:
+    - name: nama-container
+      image: image-container
+      ports:
+        - containerPort: port-container(int)

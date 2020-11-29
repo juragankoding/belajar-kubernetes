@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nama-pod
+  labels: 
+    - label-1: value-labels
+    - label-2: value-labels
+    - label-3: value-labels
+spec:
+  containers:
+    - name: nama-container
+      image: image-container
+      ports:
+        - containerPort: port-container(int)
