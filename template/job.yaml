@@ -9,7 +9,7 @@ metadata:
 spec:
   completions: 5
   parallelism: 2
-  selector: 
+  selector:
     matchLabels:
       label-key1: label-value1
   template:
@@ -17,9 +17,9 @@ spec:
       name: pod-name
       labels:
         label-keys: label-value1
-    template:
-      restartPolicy: never
-      container:
+    spec:
+      restartPolicy: Never
+      containers:
         - name: container-name
           image: image-name
           ports:
