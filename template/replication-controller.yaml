@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ReplicationController
+metadata: 
+  name: name-replication-controller
+  labels:
+    label-key1: label-value1
+  annotations: 
+    annotation-key1: annotation-value1
+specs:
+  replicas: 3
+  selector:
+    label-key1: label-value1
+  template:
+    metadata:
+      name: nama-pod
+      labels:
+        label-key1: label-value1
+    spec:
+      containers:
+        - name: container-name
+          image: image-name
+          ports:
+            - containerPort: 80
+          readlinessProbe:
+            httpGet: 
+              path: /health
+              port: 80
+            initialDelaySeconds: 0
+            periodeSeconds: 10
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 3
