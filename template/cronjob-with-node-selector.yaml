@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cron-job-name
+  labels:
+    label-key1: value-value
+  annotations:
+    annotation-key1: annotation-value1
+spec:
+  schedule: "* * * * *" #learning from crontab.guru to understand everything about schedule cronjob
+  nodeSelector:
+    label-key1: label-value1
+  jobTemplate:
+    spec:
+      selector:
+        matchLabels:
+          label-key1: label-value1
+      template:
+        metadata:
+          name: pod-name
+          labels:
+            label-key1: label-value1
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: container-name
+              image: image-name
+              ports:
+                - containerPorts: 80

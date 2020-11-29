@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: name-pod
+specs:
+  nodeSelector:
+    app-key1: value-key1
+  container: 
+    - name: name-containers
+      image: name-image
+      ports:
+        - containerPort: 80
