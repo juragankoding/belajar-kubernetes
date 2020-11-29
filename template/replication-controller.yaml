@@ -15,7 +15,7 @@ specs:
       name: nama-pod
       labels:
         label-key1: label-value1
-    spec:
+    specs:
       containers:
         - name: container-name
           image: image-name
