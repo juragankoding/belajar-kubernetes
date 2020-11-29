@@ -1,0 +1,38 @@
+apiVersion: 1.0
+kind: DeamonSet
+metadata:
+  name: deamon-set-name
+  labels: 
+    label-keys: label-values
+  annotations:
+    annotation-keys: annotation-values
+spec:
+  selector:
+    matchLabels:
+      lable-keys1: label-value1
+    matchExpressions:
+      - key: label-keys1
+        operator: In
+        values:
+          - label-value1
+  template:
+    metadata:
+      name: pod-name
+      labels:
+        label-key1: label-value1
+      annotaions:
+        annotation-key1: annotaions-value1
+    spec:
+      containers: 
+        - name: containers-name
+          image: image-name
+          ports:
+            - containerPort: 80
+          readlinessProbe:
+            httpGet:
+              - path: /health
+                port: 80
+            initialDelaySeconds: 0
+            periodSeconds: 30
+            failureThreshold: 1
+            successThreshold: 1
