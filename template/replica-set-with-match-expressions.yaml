@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ReplicaSet
+metadata:
+  name: name-replica-set
+  labels:
+    label-key1: label=value1
+  annotations:
+    annotation-key1: annotation-value2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      label-key1: label-value1
+      matchExpressions:
+        - key: app
+          operator: In
+          values:
+            - label-value1
+            - label-value2
+    template:
+      metadata:
+        name: name-pod
+        labels:
+          label-key1: label-value1
+      spec:
+        containers:
+          - name: container-name
+            image: image-name
+            ports: 
+              - containerPort: 80
+            readlinessProbe:
+              httpGet:
+                path: /health
+                port: 80
+              initialDelaySenconds: 0
+              periodSeconds: 10
+              failureThreshold: 3
+              successThreshold: 1
