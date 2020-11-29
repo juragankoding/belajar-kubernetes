@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: name-pod
-spec:
-  containers: 
+specs:
+  container: 
     - name: name-containers
       image: name-image
       ports:
