@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-belajar-kubernetes
+spec:
+  containers:
+    - name: container-nginx-belajar-kubernetes
+      image: nginx
+      ports:
+        - containerPort: 80
