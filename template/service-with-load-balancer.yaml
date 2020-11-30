@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Service
+metadata: 
+  name: name-service
+  labels:
+    labels-key1 : labels-value1
+  annotations: 
+    annotation-key1: annotation-value1
+spec:
+  type: LoadBalancer
+  selector:
+    label-key1: label-value1
+  ports:
+    - port: 80
+      targetPort: 80
+      
