@@ -1,3 +1,3 @@
-FROM nginx:alphine
+FROM nginx:alpine
 
-RUN apk --no-cache add curl
+RUN apk add curl
