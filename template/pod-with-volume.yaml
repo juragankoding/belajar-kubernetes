@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: name-pod
+  labels:
+    label-keys1: label-value1
+  annotations:
+    annotations-keys1: annotations-value1
+spec:
+  volumes:
+    - name: volume-name
+      emptyDir: {}
+  containers:
+    - name: container-name
+      image: image-name
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - mountPath: /app/volume
+          name: volume-name
