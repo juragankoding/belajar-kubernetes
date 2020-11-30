@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: pod-name
+  labels:
+    label-key1: label-value1
+specs:
+  containers:
+    - name: container-name
+      image: image-name
+      ports:
+        - containerPort: 80
+      env:
+        - name: ENV_NAME
+          value: "ENV VALUE"
