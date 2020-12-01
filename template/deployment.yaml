@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-name
+  labels:
+    label-key1: label-value1
+  annotations:
+    annotation-key1: annotation-value1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      label-key1: label-value1
+  template:
+    metadata:
+      name: pod-name
+      labels:
+        label-key1: label-value1
+    spec:
+      containers:
+      - name: container-name
+        image: image-name
+        ports:
+          - containerPort: 80
+        readlinessProbe:
+          - httpGet:
+              path: /
+              port: 80
+            intiialDelaySeconds: 0
+            periodSeconds: 30
+            failureThreshold: 0
+            successThreshold: 0
