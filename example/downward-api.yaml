@@ -42,8 +42,12 @@ spec:
             - name: POD_IP
                 valueFrom:
                   fieldRef:
-                    fieldPath: metadata.podIP
+                    fieldPath: status.podIP
             - name: POD_NODE
                 valueFrom:  
                   fieldRef:
-                    fieldPath: metadata.nodeName
+                    fieldPath: spec.nodeName
+            - name: POD_NODE_IP
+                valueFrom:
+                  fieldRef:
+                    valuePath: status.HostIP
