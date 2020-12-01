@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: name-stateful
+  labels:
+    name: name-stateful
+spec:
+  serviceName: name-stateful-service
+  replicas: 3
+  selector:
+    matchLabels:
+      name: name-stateful
+  volumeClaimTemplates:
+    - metadata:
+        name: name-stateful-volume-claim
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        volumeMode: Filesystem
+        resourceas:
+          requests:
+            storage: 1Gi
+  template:
+    metadata:
+      name: name-stateful
+      labels:
+        

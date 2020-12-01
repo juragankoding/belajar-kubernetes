@@ -23,7 +23,7 @@ spec:
       annotaions:
         annotation-key1: annotaions-value1
     spec:
-      containers: 
+      containers:
         - name: containers-name
           image: image-name
           ports:

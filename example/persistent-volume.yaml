@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nodejs-writer-volume
+spec:
+  accessNodes:
+    - ReadWriteOnce
+  capacity:
+    storage: 5Gi
+  hostPath:
+    path: /data/location
+
+---
+apiVesion: v1
+kind: PersistentVolumeData
+metadata:
+  name: nodejs-writer-volume-claim
+spec:
+  accessNodes:
+    - ReadWriteOnce
+  volumeNode: FileSystem
+  resources:
+    request:
+      storage: 1Gi
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nodejs-writer
+  labels:
+    name: nodejs-writer
+spec:
+  volume:
+    - name: html
+      persistentVolumeClaim:
+        claimName: nodejs-writer-volume-claim
+  containers:
+  - name: nodejs-writer
+    image: khannedy/nodejs-writer
+    volumeMounts:
+      - mountPath: /app/html
+        name: html
