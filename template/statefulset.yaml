@@ -5,6 +5,8 @@ metadata:
   labels:
     name: name-stateful
 spec:
+  # tidak datap di hapus servicenya karena masih ada issue
+  # https://github.com/kubernetes/kubernetes/issues/69608
   serviceName: name-stateful-service
   replicas: 3
   selector:
@@ -24,4 +26,10 @@ spec:
     metadata:
       name: name-stateful
       labels:
-        
+    spec:
+      containers:
+        - name: name-stateful
+          image: image/name-stateful
+          volumeMounts:
+            - mountPath: /app/data
+              name: name-stateful-volume-claim
