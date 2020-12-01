@@ -4,9 +4,9 @@ metadata:
   name: nodejs-env-config
 data:
   APPLICATIONA: My Cool Application
-  VERSION; 1.0.0
+  VERSION: 1.0.0
 
---- 
+---
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
@@ -21,7 +21,7 @@ spec:
       name: nodejs-env
       labels:
         name: nodeje-env
-    spec:
+    specs:
       contianers:
         - name: nodejs-env
           imae: khannedy/nodejs-env
@@ -32,22 +32,35 @@ spec:
                 name: nodejs-env-config
           env:
             - name: POD_NAME
-                valueFrom:
-                  fieldRef:
-                    fieldPath: metadata.name
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
             - name: POD_NAMESPACE
-                valueFrom:
-                  fieldRef:
-                    fieldPath: medatadata.namespace
+              valueFrom:
+                fieldRef:
+                  fieldPath: medatadata.namespace
             - name: POD_IP
-                valueFrom:
-                  fieldRef:
-                    fieldPath: status.podIP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
             - name: POD_NODE
-                valueFrom:  
-                  fieldRef:
-                    fieldPath: spec.nodeName
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
             - name: POD_NODE_IP
-                valueFrom:
-                  fieldRef:
-                    valuePath: status.HostIP
+              valueFrom:
+                fieldRef:
+                  valuePath: status.HostIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodejs-env-service
+spec:
+  type: NodePort
+  selector:
+    name: nodejs-env
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 30005
